@@ -1,0 +1,84 @@
+site_name: CCAST Documentation Hub
+site_url: https://docs.ccast.ndsu.edu
+site_description: HPC user guides and resources for NDSU CCAST
+repo_url: https://github.com/ndsu-ccast/ccast-docs  # update after creating the repo
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  language: en
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: green          # institutional green accent
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: green
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+  features:
+    - navigation.tabs          # top horizontal menu
+    - navigation.sections      # grouped sidebar items
+    - navigation.top           # back-to-top button
+    - search.suggest           # live search suggestions
+    - search.highlight         # highlight matches on page
+    - content.code.copy        # copy button on code blocks
+    - content.action.edit      # "edit this page" link to GitHub
+
+markdown_extensions:
+  - admonition                 # styled tip/warning boxes
+  - pymdownx.details           # collapsible sections
+  - pymdownx.superfences       # nested code blocks and tabs
+  - pymdownx.tabbed:
+      alternate_style: true    # content tabs for partition switches
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - attr_list
+  - tables
+
+nav:
+  - Welcome: index.md
+  - Getting Started:
+      - CCAST User Guide: getting-started/user-guide.md
+      - Logging into CCAST: getting-started/logging-in.md
+      - FAQ: getting-started/faq.md
+  - Running Jobs:
+      - Slurm Job Submission: running-jobs/slurm-job-submission.md
+      - PBS Job Submission (legacy): running-jobs/pbs-job-submission.md
+  - Systems:
+      - Thunder: systems/thunder.md
+      - Thunder Prime: systems/thunder-prime.md
+  - Software:
+      - Python: software/python.md
+      - R Packages: software/r-packages.md
+      - MATLAB: software/matlab.md
+      - Gaussian 16: software/gaussian16.md
+      - LAMMPS: software/lammps.md
+      - GROMACS: software/gromacs.md
+      - Containers (Apptainer): software/apptainer-containers.md
+      - Big Data: software/big-data.md
+      - Intel MKL: software/intel-mkl.md
+      - Neural Networks: software/neural-networks.md
+  - Storage & Data:
+      - Data Management: storage-data/data-management.md
+      - Globus Data Transfer: storage-data/globus.md
+  - Policies:
+      - Usage Policies: policies/usage-policies.md
+  - Training:
+      - 2026 Summer HPC Bootcamp: training/2026-summer-hpc-bootcamp.md
+      - 2025 Summer AI/ML Workshop: training/2025-summer-ai-ml-workshop.md
+      - Training Program: training/training-program.md
+      - Internship Program: training/internship-program.md
+  - About:
+      - About CCAST: about/ccast.md
+      - Research Publications: about/publications.md
+      - "Highlight: Flood Modeling": about/highlight-flood-modeling.md
