@@ -13,6 +13,8 @@ ccast-docs/
 ├── .github/workflows/    # CI: build check + GitHub Pages deploy
 └── docs/
     ├── index.md          # homepage
+    ├── stylesheets/      # ndsu branding
+    ├── assets/           # ndsu logo
     ├── getting-started/  # user guide, logging in, FAQ
     ├── running-jobs/     # Slurm and legacy PBS job submission
     ├── systems/          # Thunder, Thunder Prime
