@@ -1,7 +1,7 @@
 site_name: CCAST Documentation Hub
 site_url: https://docs.ccast.ndsu.edu
 site_description: HPC user guides and resources for NDSU CCAST
-repo_url: https://github.com/ndsu-ccast/ccast-docs  # update after creating the repo
+repo_url: https://github.com/SaraTolba/ccast-docs  # update after moving the repo to ndsuccast
 edit_uri: edit/main/docs/
 
 theme:
