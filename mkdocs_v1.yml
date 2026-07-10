@@ -7,46 +7,38 @@ edit_uri: edit/main/docs/
 theme:
   name: material
   language: en
-  logo: assets/ndsu-logo.svg        # official NDSU logo file (do not recreate; use provided graphic)
-  favicon: assets/favicon.png
-  font:
-    text: Montserrat                # NDSU-approved Google alternative to Gotham
-    code: Roboto Mono
   palette:
     # Light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: custom               # NDSU Green #00583D via extra.css
-      accent: custom                # NDSU Yellow #FFC425 via extra.css
+      primary: green          # institutional green accent
+      accent: amber
       toggle:
         icon: material/weather-sunny
         name: Switch to dark mode
     # Dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: custom
-      accent: custom
+      primary: green
+      accent: amber
       toggle:
         icon: material/weather-night
         name: Switch to light mode
   features:
-    - navigation.tabs
-    - navigation.sections
-    - navigation.top
-    - search.suggest
-    - search.highlight
-    - content.code.copy
-    - content.action.edit
-
-extra_css:
-  - stylesheets/extra.css
+    - navigation.tabs          # top horizontal menu
+    - navigation.sections      # grouped sidebar items
+    - navigation.top           # back-to-top button
+    - search.suggest           # live search suggestions
+    - search.highlight         # highlight matches on page
+    - content.code.copy        # copy button on code blocks
+    - content.action.edit      # "edit this page" link to GitHub
 
 markdown_extensions:
-  - admonition
-  - pymdownx.details
-  - pymdownx.superfences
+  - admonition                 # styled tip/warning boxes
+  - pymdownx.details           # collapsible sections
+  - pymdownx.superfences       # nested code blocks and tabs
   - pymdownx.tabbed:
-      alternate_style: true
+      alternate_style: true    # content tabs for partition switches
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
