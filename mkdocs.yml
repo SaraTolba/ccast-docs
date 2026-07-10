@@ -7,8 +7,8 @@ edit_uri: edit/main/docs/
 theme:
   name: material
   language: en
-  logo: assets/ndsu-logo.svg        # official NDSU logo file (do not recreate; use provided graphic)
-  favicon: assets/favicon.png
+  logo: assets/ndsu-logo.png        # official NDSU logo file (do not recreate; use provided graphic)
+  favicon: assets/NDSU-stacked-greenbox.png
   font:
     text: Montserrat                # NDSU-approved Google alternative to Gotham
     code: Roboto Mono

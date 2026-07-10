@@ -1,0 +1,39 @@
+/* ============================================================
+   NDSU Brand Colors — per NDSU Brand Guidelines
+   Primary: NDSU Green #00583D (PMS 343)
+            NDSU Yellow #FFC425 (PMS 123)
+   Place this file at: docs/stylesheets/extra.css
+   ============================================================ */
+
+:root {
+  --md-primary-fg-color:        #00583D;   /* NDSU Green */
+  --md-primary-fg-color--light: #007A55;
+  --md-primary-fg-color--dark:  #003524;   /* Dark Green (PMS 5605) */
+  --md-accent-fg-color:         #FFC425;   /* NDSU Yellow */
+}
+
+/* Light mode: links in NDSU Green (passes AAA on white) */
+[data-md-color-scheme="default"] {
+  --md-typeset-a-color:         #00583D;
+}
+
+/* Dark mode: keep green header; use Lime Green (#BED73B,
+   expanded palette) for links so they stay readable on slate */
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color:        #00583D;
+  --md-accent-fg-color:         #FFC425;
+  --md-typeset-a-color:         #BED73B;
+}
+
+/* NDSU Yellow underline accent on the active nav tab */
+.md-tabs__link--active {
+  border-bottom: 3px solid #FFC425;
+}
+
+/* Yellow highlight for search matches (green text on yellow
+   is an approved/preferred pairing per the WCAG matrix) */
+.md-search-result mark,
+.md-typeset mark {
+  background-color: #FFC425;
+  color: #003524;
+}
