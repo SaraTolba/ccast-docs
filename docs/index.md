@@ -1,6 +1,6 @@
 # CCAST Documentation Hub
 
-Welcome to the user documentation for the **Center for Computationally Assisted Science and Technology (CCAST)** at North Dakota State University.
+Welcome to the user documentation for the [Center for Computationally Assisted Science and Technology (CCAST)](https://www.ndsu.edu/ccast) at North Dakota State University.
 
 CCAST operates NDSU's high-performance computing (HPC) clusters — **Thunder** and **Thunder Prime** — and supports research computing across campus and the region.
 
