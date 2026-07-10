@@ -26,11 +26,22 @@ ccast-docs/
 ## Local preview
 
 ```bash
+module load python/3.12.2
 pip install -r requirements.txt
+```
+From a new terminal on your laptop:
+```
+ssh -L 8001:127.0.0.1:8000 user.name@prime.ccast.ndsu.edu
+```
+
+Then, in another terminal/session on the cluster, run:
+```
+cd ccast-docs
+module load python/3.12.2
 mkdocs serve
 ```
 
-Open <http://127.0.0.1:8000>. The browser refreshes automatically as pages are edited.
+Open <http://127.0.0.1:8001>. The browser refreshes automatically as pages are edited.
 
 ## Making changes
 
