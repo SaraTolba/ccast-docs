@@ -1,26 +1,35 @@
-site_name: CCAST Documentation Hub
+site_name: CCAST User Guides
 site_url: https://docs.ccast.ndsu.edu
 site_description: HPC user guides and resources for NDSU CCAST
-repo_url: https://github.com/SaraTolba/ccast-docs  # update after moving the repo to ndsuccast
+repo_name: SaraTolba/ccast-docs
+repo_url: https://github.com/SaraTolba/ccast-docs   # update after moving the repo to ndsuccast
 edit_uri: edit/main/docs/
 
 theme:
   name: material
+  custom_dir: overrides
   language: en
-  logo: assets/ndsu-logo.png        # official NDSU logo file (do not recreate; use provided graphic)
+  logo: assets/ndsu-logo.png         # official NDSU logo file (do not recreate; use provided graphic)
   favicon: assets/NDSU-stacked-greenbox.png
   font:
-    text: Montserrat                # NDSU-approved Google alternative to Gotham
+    text: Montserrat                 # NDSU-approved Google alternative to Gotham
     code: Roboto Mono
   palette:
+    # Automatic (follows OS preference)
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
     # Light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: custom               # NDSU Green #00583D via extra.css
-      accent: custom                # NDSU Yellow #FFC425 via extra.css
+      primary: custom                # NDSU Green #00583D via extra.css
+      accent: custom                 # NDSU Yellow #FFC425 via extra.css
       toggle:
         icon: material/weather-sunny
         name: Switch to dark mode
+
     # Dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
@@ -28,65 +37,191 @@ theme:
       accent: custom
       toggle:
         icon: material/weather-night
-        name: Switch to light mode
+        name: Switch to system preference
+
   features:
-    - navigation.tabs
-    - navigation.sections
-    - navigation.top
-    - search.suggest
-    - search.highlight
+    # Content
+    - content.action.edit            # pencil icon, top-right of the page
+    - content.action.view            # source icon, next to it
     - content.code.copy
-    - content.action.edit
+    - content.code.annotate
+    - content.tooltips
+    # Navigation
+    # NOTE: navigation.tabs is intentionally ABSENT. That is what moves every
+    # top-level section into the left sidebar as a bold group, ALCF-style.
+    - navigation.sections
+    - navigation.indexes             # section headers become clickable (section/index.md)
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.path
+    - navigation.top
+    - navigation.tracking
+    # Table of contents
+    - toc.follow
+    # Search
+    - search.highlight
+    - search.suggest
 
 extra_css:
   - stylesheets/extra.css
 
+extra_javascript:
+  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
+  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.number.js
+  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.filesize.js
+  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.dotsep.js
+  - javascripts/tablesort.js
+
 markdown_extensions:
+  - abbr
   - admonition
+  - attr_list
+  - footnotes
+  - md_in_html
+  - tables
+  - pymdownx.caret
+  - pymdownx.critic
   - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
   - pymdownx.superfences
+  - pymdownx.tilde
+  - pymdownx.blocks.caption
+  - pymdownx.blocks.definition
+  - pymdownx.highlight:
+      use_pygments: true
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.snippets:
+      base_path: ["."]
+      dedent_subsections: true
+      check_paths: true
+      auto_append:
+        - includes/abbreviations.md
   - pymdownx.tabbed:
       alternate_style: true
-  - pymdownx.highlight:
-      anchor_linenums: true
-  - pymdownx.inlinehilite
-  - attr_list
-  - tables
+      combine_header_slug: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - toc:
+      permalink: true
 
+plugins:
+  - search:
+      lang: en
+      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - minify:
+      minify_html: true
+  - redirects:
+      redirect_maps: {}
+
+validation:
+  omitted_files: warn
+  absolute_links: warn
+  unrecognized_links: warn
+  anchors: warn
+  not_found: warn
+
+extra:
+  homepage: https://docs.ccast.ndsu.edu
+  # Institutional links rendered in the green band above the header (overrides/main.html)
+  ndsu_band:
+    - name: CCAST Home
+      link: https://www.ccast.ndsu.edu
+    - name: NDSU
+      link: https://www.ndsu.edu
+    - name: Request an Account
+      link: https://www.ccast.ndsu.edu/accounts/
+    - name: Support
+      link: mailto:ndsu.ccast.support@ndsu.edu
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/SaraTolba/ccast-docs
+    - icon: fontawesome/solid/globe
+      link: https://www.ccast.ndsu.edu
+    - icon: fontawesome/solid/envelope
+      link: mailto:ndsu.ccast.support@ndsu.edu
+  # analytics:
+  #   provider: google
+  #   property: G-XXXXXXXXXX
+
+# ALCF puts a couple of standalone entries above the grouped sections, then
+# runs every section as a flat bold group. Same shape here.
 nav:
   - Welcome: index.md
+  - CCAST Home: https://www.ccast.ndsu.edu
+  - Contribute to These Docs: contributing.md
+
   - Getting Started:
+      - getting-started/index.md
       - CCAST User Guide: getting-started/user-guide.md
       - Logging into CCAST: getting-started/logging-in.md
       - FAQ: getting-started/faq.md
+
   - Running Jobs:
+      - running-jobs/index.md
       - Slurm Job Submission: running-jobs/slurm-job-submission.md
       - PBS Job Submission (legacy): running-jobs/pbs-job-submission.md
+
   - Systems:
+      - systems/index.md
       - Thunder: systems/thunder.md
       - Thunder Prime: systems/thunder-prime.md
+
   - Software:
+      - software/index.md
       - Python: software/python.md
       - R Packages: software/r-packages.md
       - MATLAB: software/matlab.md
-      - Gaussian 16: software/gaussian16.md
-      - LAMMPS: software/lammps.md
-      - GROMACS: software/gromacs.md
       - Containers (Apptainer): software/apptainer-containers.md
-      - Big Data: software/big-data.md
-      - Intel MKL: software/intel-mkl.md
-      - Neural Networks: software/neural-networks.md
+      - Applications:
+          - Gaussian 16: software/gaussian16.md
+          - LAMMPS: software/lammps.md
+          - GROMACS: software/gromacs.md
+      - Data Science:
+          - Big Data: software/big-data.md
+          - Neural Networks: software/neural-networks.md
+      - Libraries:
+          - Intel MKL: software/intel-mkl.md
+
   - Storage & Data:
+      - storage-data/index.md
       - Data Management: storage-data/data-management.md
       - Globus Data Transfer: storage-data/globus.md
+
   - Policies:
+      - policies/index.md
       - Usage Policies: policies/usage-policies.md
+
   - Training:
+      - training/index.md
       - 2026 Summer HPC Bootcamp: training/2026-summer-hpc-bootcamp.md
       - 2025 Summer AI/ML Workshop: training/2025-summer-ai-ml-workshop.md
       - Training Program: training/training-program.md
       - Internship Program: training/internship-program.md
+
   - About:
+      - about/index.md
       - About CCAST: about/ccast.md
       - Research Publications: about/publications.md
       - "Highlight: Flood Modeling": about/highlight-flood-modeling.md
+
+  - Acronyms: acronyms.md
+
+not_in_nav: |
+  not_in_nav/
+
+exclude_docs: |
+  old/
+  unused/
+  TODO.md
+  notes.md
+
+draft_docs: |
+  drafts/
+
+watch:
+  - includes/
+  - overrides/

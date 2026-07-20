@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{#
+  ALCF stacks two rows in their blue chrome: institutional links on top, then the
+  site header. We do the same, but instead of rewriting Material's header.html
+  (which breaks on every theme upgrade), we prepend a band and call super() so
+  the stock header -- search, palette toggle, repo link -- keeps working.
+#}
+{% block header %}
+  <div class="ndsu-band" role="complementary" aria-label="NDSU links">
+    <div class="ndsu-band__inner">
+      <a class="ndsu-band__wordmark" href="https://www.ndsu.edu">
+        NDSU <span class="ndsu-band__divider"></span>
+        <span class="ndsu-band__unit">CCAST</span>
+      </a>
+      {% if config.extra.ndsu_band %}
+        <nav class="ndsu-band__links">
+          {% for item in config.extra.ndsu_band %}
+            <a href="{{ item.link }}">{{ item.name }}</a>
+          {% endfor %}
+        </nav>
+      {% endif %}
+    </div>
+  </div>
+  {{ super() }}
+{% endblock %}
