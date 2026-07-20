@@ -1,96 +1,53 @@
 /* ============================================================
-   NDSU Brand Colors — per NDSU Brand Guidelines
-   Primary: NDSU Green #00583D (PMS 343)
-            NDSU Yellow #FFC425 (PMS 123)
-   Place this file at: docs/stylesheets/extra.css
+   CCAST Documentation — theme styles
+   NDSU Brand Colors, per NDSU Brand Guidelines:
+     NDSU Green   #00583D (PMS 343)
+     NDSU Yellow  #FFC425 (PMS 123)
+     Dark Green   #003524 (PMS 5605)
+     Lime Green   #BED73B (expanded palette, dark-mode links)
+   Location: docs/stylesheets/extra.css
    ============================================================ */
 
+/* --------------------------------------------------------------
+   1. Palette
+   -------------------------------------------------------------- */
 :root {
+  /* Material theme variables */
   --md-primary-fg-color:        #00583D;   /* NDSU Green */
   --md-primary-fg-color--light: #007A55;
-  --md-primary-fg-color--dark:  #003524;   /* Dark Green (PMS 5605) */
+  --md-primary-fg-color--dark:  #003524;   /* Dark Green */
   --md-accent-fg-color:         #FFC425;   /* NDSU Yellow */
+
+  /* Local helpers used by the band and accents below */
+  --ndsu-green:      #00583D;
+  --ndsu-green-dark: #003524;
+  --ndsu-yellow:     #FFC425;
 }
 
-/* Light mode: links in NDSU Green (passes AAA on white) */
+/* Light mode: green links pass AAA on white */
 [data-md-color-scheme="default"] {
-  --md-typeset-a-color:         #00583D;
+  --md-typeset-a-color: #00583D;
 }
 
-/* Dark mode: keep green header; use Lime Green (#BED73B,
-   expanded palette) for links so they stay readable on slate */
+/* Dark mode: keep the green header; lime links stay readable on slate */
 [data-md-color-scheme="slate"] {
-  --md-primary-fg-color:        #00583D;
-  --md-accent-fg-color:         #FFC425;
-  --md-typeset-a-color:         #BED73B;
+  --md-primary-fg-color: #00583D;
+  --md-accent-fg-color:  #FFC425;
+  --md-typeset-a-color:  #BED73B;
 }
 
-/* NDSU Yellow underline accent on the active nav tab */
-.md-tabs__link--active {
-  border-bottom: 3px solid #FFC425;
-}
-
-/* Yellow highlight for search matches (green text on yellow
-   is an approved/preferred pairing per the WCAG matrix) */
+/* Yellow highlight for search matches and <mark> (green-on-yellow is an
+   approved pairing per the brand WCAG matrix) */
 .md-search-result mark,
 .md-typeset mark {
   background-color: #FFC425;
   color: #003524;
 }
-/* ==========================================================================
-   APPEND THIS TO docs/stylesheets/extra.css
-   Layout parity with docs.alcf.anl.gov, in NDSU colors.
-   If your extra.css already defines the palette block below, delete the
-   duplicate -- keep only one copy.
-   ========================================================================== */
 
-/* --------------------------------------------------------------------------
-   1. Palette. `primary: custom` / `accent: custom` in mkdocs.yml do nothing
-      without these. NDSU Green #00583D, NDSU Yellow #FFC425.
-   -------------------------------------------------------------------------- */
-:root {
-  --ndsu-green: #00583d;
-  --ndsu-green-dark: #003d2a;
-  --ndsu-yellow: #ffc425;
-}
-
-[data-md-color-primary="custom"] {
-  --md-primary-fg-color: var(--ndsu-green);
-  --md-primary-fg-color--light: #00734f;
-  --md-primary-fg-color--dark: var(--ndsu-green-dark);
-  --md-primary-bg-color: #ffffff;
-  --md-primary-bg-color--light: rgba(255, 255, 255, 0.7);
-}
-
-[data-md-color-accent="custom"] {
-  --md-accent-fg-color: var(--ndsu-green);
-  --md-accent-fg-color--transparent: rgba(0, 88, 61, 0.1);
-  --md-accent-bg-color: #ffffff;
-}
-
-/* Yellow is a highlight, not a link color -- it fails contrast on white.
-   Use it for the underline accent the way ALCF uses their light blue. */
-.md-typeset a {
-  text-decoration: underline;
-  text-decoration-color: var(--ndsu-yellow);
-  text-underline-offset: 0.15em;
-}
-.md-typeset a:hover {
-  text-decoration-color: currentcolor;
-}
-
-/* Dark mode: green goes nearly black on the slate background, so lift it. */
-[data-md-color-scheme="slate"][data-md-color-primary="custom"] {
-  --md-typeset-a-color: #6ecfa8;
-}
-[data-md-color-scheme="slate"][data-md-color-accent="custom"] {
-  --md-accent-fg-color: #6ecfa8;
-}
-
-/* --------------------------------------------------------------------------
-   2. The institutional band (overrides/main.html), sitting directly above
-      the Material header so the two read as one green block.
-   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------
+   2. Institutional band (overrides/main.html), sitting directly
+      above the Material header so the two read as one green block
+   -------------------------------------------------------------- */
 .ndsu-band {
   background-color: var(--ndsu-green-dark);
   color: #ffffff;
@@ -147,16 +104,15 @@
   color: var(--ndsu-yellow);
 }
 
-/* On phones the band eats the whole screen. Keep the wordmark, drop the links. */
+/* On phones the band would crowd the header. Keep the wordmark, drop links. */
 @media screen and (max-width: 44.9375em) {
   .ndsu-band__links { display: none; }
   .ndsu-band__inner { justify-content: center; }
 }
 
-/* --------------------------------------------------------------------------
-   3. Sidebar. ALCF's groups are bold, dark, and flush-left, with children
-      set noticeably lighter. Material's defaults are close but timid.
-   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------
+   3. Sidebar — bold, flush-left section groups, ALCF-style
+   -------------------------------------------------------------- */
 .md-nav--primary .md-nav__item--section > .md-nav__link {
   font-weight: 700;
   color: var(--md-default-fg-color);
@@ -172,10 +128,10 @@
   width: 12.5rem;
 }
 
-/* --------------------------------------------------------------------------
-   4. The "Does this doc need an update?" block under the TOC.
-      Requires overrides/partials/toc.html -- see the notes.
-   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------
+   4. "Does this doc need an update?" block under the right-hand TOC
+      (requires overrides/partials/toc.html)
+   -------------------------------------------------------------- */
 .ccast-toc-feedback {
   margin: 1.5rem 0.6rem 0;
   padding-top: 1rem;
@@ -200,10 +156,10 @@
   text-decoration: underline;
 }
 
-/* --------------------------------------------------------------------------
-   5. Content width. ALCF runs wide. Material caps at 61rem by default;
-      delete this rule if the long lines bother you.
-   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------
+   5. Content width — ALCF runs wide. Delete this rule to return
+      to Material's default 61rem cap.
+   -------------------------------------------------------------- */
 .md-grid {
   max-width: 68rem;
 }
